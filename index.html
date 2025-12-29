@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mingyan Yang</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', Georgia, serif;
+            font-size: 20px;
+            line-height: 1.75;
+            color: #111;
+            background-color: #fff;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e8e8e8;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .nav-left {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        nav .nav-left a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        nav .nav-right {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav .nav-right a {
+            color: #111;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav .nav-right a:hover {
+            color: #666;
+        }
+
+        nav .nav-right a.active {
+            border-bottom: 2px solid #111;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 3rem;
+        }
+
+        /* Header Section */
+        .header-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* About Container - Two column layout */
+        .about-container {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+
+        .about-container section {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .profile-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header-section .affiliation {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        .header-section .contact-info {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Content Sections */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        section p {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+
+        section p a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        section p a:hover {
+            text-decoration: underline;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        section ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        section ul li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        /* News Section */
+        .news-item {
+            display: flex;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .news-item .date {
+            min-width: 120px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .news-item .content {
+            flex: 1;
+        }
+
+        /* Publications */
+        .publication {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .publication .title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .publication .title a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        .publication .title a:hover {
+            text-decoration: underline;
+        }
+
+        .publication .authors {
+            margin-bottom: 0.3rem;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .publication .authors .me {
+            font-weight: 600;
+        }
+
+        .publication .venue {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .publication .abstract {
+            margin-bottom: 0.8rem;
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .publication .links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .publication .links a {
+            color: #111;
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .publication .links a:hover {
+            background: #f5f5f5;
+        }
+
+        /* Projects */
+        /* .project {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .project:last-child {
+            border-bottom: none;
+        }
+
+        .project .title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .project .description {
+            color: #555;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project .links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project .links a {
+            color: #111;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .project .links a:hover {
+            border-bottom-color: #111;
+        } */
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid #e8e8e8;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: #111;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Links */
+        a {
+            color: #111;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-section h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 5rem 1.5rem 2rem;
+            }
+
+            .about-container {
+                flex-direction: column-reverse;
+                align-items: center;
+            }
+
+            .profile-photo {
+                margin-bottom: 2rem;
+            }
+
+            .news-item {
+                flex-direction: column;
+            }
+
+            .news-item .date {
+                margin-bottom: 0.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-left">
+                <a href="#about">Mingyan Yang</a>
+            </div>
+            <div class="nav-right">
+                <a href="#about" class="active">about</a>
+                <a href="#publications">publications</a>
+                <!-- <a href="#projects">projects</a> -->
+                <a href="cv.pdf">cv</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header-section">
+            <h1>Mingyan Yang</h1>
+            <!-- <div class="affiliation">
+                Ph.D. Student in Computer Science<br>
+                University Name
+            </div>
+            <div class="contact-info">
+                Office: Building Name, Room 123<br>
+                Email: your.email@university.edu
+            </div> -->
+        </header>
+
+        <!-- About Section with Photo -->
+        <div class="about-container">
+            <section id="about">
+            <p>
+                I am Mingyan Yang (杨茗焱), a senior undergraduate computer science student from <a href="https://acm.sjtu.edu.cn/">ACM Honor Class</a>, <a href="https://en.zhiyuan.sjtu.edu.cn/">Zhiyuan College</a>, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. Currently, I am a research intern advised by Prof. <a href="https://jinyangli.github.io/">Jinyang Li</a> at New York University.
+                I also had the opportunity to work with Prof. <a href="https://jhc.sjtu.edu.cn/people/members/faculty/chen-chen.html">Chen Chen</a> at Shanghai Jiao Tong University.
+            </p>
+
+            <p>
+                My research interests lie at the intersection of <strong>machine learning systems</strong> and <strong>large-scale 3D representations</strong>, with a focus on efficient systems and algorithms for scalable scene rendering and neural representations.
+            </p>
+
+            <p>
+                I am applying to CS PhD programs for Fall 2026 and would be happy to connect—feel free to check my <a href="cv.pdf">CV</a> or <a href="mailto:yangmingyan@sjtu.edu.cn">reach out</a> if you’re interested in my research.
+            </p>
+
+            <!-- <h3>Interests</h3>
+            <ul>
+                <li>Machine Learning Systems</li>
+                <li>3D Reconstruction and Rendering</li>
+                <li>Neural Representations</li>
+                <li>Deep Learning</li>
+            </ul> -->
+
+            <h2>News</h2>
+            <div class="news-item">
+                <div class="date">Jul 2025</div>
+                <div class="content">Started my research internship at New York University.</div>
+            </div>
+            <!-- <div class="news-item">
+                <div class="date">Jul 2025</div>
+                <div class="content">One paper accepted to CVPR 2025.</div>
+            </div> -->
+            <!-- <div class="news-item">
+                <div class="date">Sep 2024</div>
+                <div class="content">Started my Ph.D. at University Name.</div>
+            </div>
+            <div class="news-item">
+                <div class="date">Jun 2024</div>
+                <div class="content">Graduated with honors from University Name.</div>
+            </div> -->
+            </section>
+
+            <div class="profile-photo">
+                <img src="ymy.jpg" alt="Mingyan Yang">
+            </div>
+        </div>
+
+        <!-- Publications Section -->
+        <section id="publications">
+            <h2>Selected Publications</h2>
+
+            <div class="publication">
+                <div class="title">
+                    <a href="#">Justitia: Fair and Efficient Scheduling for LLM Applications</a>
+                </div>
+                <div class="authors">
+                    <span class="me">Mingyan Yang</span>, Guanjie Wang, Manqi Luo, Yifei Liu, Chen Chen, Han Zhao, Yu Feng, Quan Chen, Minyi Guo
+                </div>
+                <div class="venue">
+                    preprint
+                </div>
+                <!-- <div class="abstract">
+                    We propose a novel approach for efficient rendering of large-scale 3D scenes using neural
+                    Gaussian splatting with distributed computing. Our method achieves real-time performance
+                    while maintaining high visual quality across diverse scene types.
+                </div> -->
+                <div class="links">
+                    <!-- <a href="#">PDF</a> -->
+                    <a href="https://arxiv.org/pdf/2510.17015">arXiv</a>
+                    <!-- <a href="#">Code</a>
+                    <a href="#">Project Page</a> -->
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="title">
+                    <a href="#">Revisiting 3D LLM Benchmarks: Are We Really Testing 3D Capabilities?</a>
+                </div>
+                <div class="authors">
+                    Jiahe Jin, Yanheng He, <span class="me">Mingyan Yang</span>
+                </div>
+                <div class="venue">
+                    Findings of the Association for Computational Linguistics (ACL 2025)
+                </div>
+                <!-- <div class="abstract">
+                    This work introduces an adaptive level-of-detail mechanism for neural rendering that
+                    dynamically adjusts computational resources based on viewing distance and scene complexity,
+                    enabling efficient rendering of complex environments.
+                </div> -->
+                <div class="links">
+                    <a href="https://aclanthology.org/2025.findings-acl.1222.pdf">PDF</a>
+                    <a href="https://arxiv.org/pdf/2502.08503">arXiv</a>
+                    <!-- <a href="#">Code</a> -->
+                </div>
+            </div>
+
+            <!-- <div class="publication">
+                <div class="title">
+                    <a href="#">Deep Learning for 3D Point Cloud Processing: A Survey</a>
+                </div>
+                <div class="authors">
+                    <span class="me">Mingyan Yang</span>, Collaborator B
+                </div>
+                <div class="venue">
+                    IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2023
+                </div>
+                <div class="abstract">
+                    A comprehensive survey of deep learning techniques for 3D point cloud processing, covering
+                    classification, segmentation, object detection, and reconstruction tasks. We analyze over
+                    200 papers and identify key research directions.
+                </div>
+                <div class="links">
+                    <a href="#">PDF</a>
+                    <a href="#">DOI</a>
+                </div>
+            </div> -->
+        </section>
+
+        <!-- Projects Section -->
+        <!-- <section id="projects">
+            <h2>Projects</h2>
+
+            <div class="project">
+                <div class="title">Large-Scale 3D Gaussian Splatting Server</div>
+                <div class="description">
+                    An efficient distributed rendering system for large-scale 3D scenes using Gaussian splatting.
+                    Implements BVH-based frustum culling and k-d tree partitioning for optimal performance.
+                </div>
+                <div class="links">
+                    <a href="#">GitHub</a>
+                    <a href="#">Documentation</a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="title">Neural Radiance Fields Toolkit</div>
+                <div class="description">
+                    A comprehensive toolkit for training and deploying neural radiance fields (NeRF) with
+                    support for various scene representations and rendering techniques.
+                </div>
+                <div class="links">
+                    <a href="#">GitHub</a>
+                    <a href="#">Demo</a>
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="title">3D Scene Understanding Pipeline</div>
+                <div class="description">
+                    An end-to-end pipeline for 3D scene understanding from RGB-D images, including semantic
+                    segmentation, instance detection, and scene graph generation.
+                </div>
+                <div class="links">
+                    <a href="#">GitHub</a>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                Email: <a href="mailto:yangmingyan@sjtu.edu.cn">yangmingyan@sjtu.edu.cn</a> |
+                <a href="https://github.com/Fircube">GitHub</a> 
+                <!-- <a href="https://scholar.google.com/">Google Scholar</a> -->
+            </p>
+            <p style="margin-top: 1rem; color: #999;">
+                Last updated: December 2025
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
