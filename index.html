@@ -177,6 +177,45 @@
             left: 0;
         }
 
+        /* Education Section */
+        .education-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.8rem;
+        }
+
+        .education-item .logo {
+            flex-shrink: 0;
+            width: 70px;
+            padding-top: 0.35rem;
+            text-align: center;
+        }
+
+        .education-item .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .education-item .details {
+            flex: 1;
+            font-size: 1.05rem;
+            line-height: 1.55;
+        }
+
+        .education-item .institution {
+            font-weight: 700;
+        }
+
+        .education-item a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .education-item a:hover {
+            text-decoration: underline;
+        }
+
         /* News Section */
         .news-item {
             display: flex;
@@ -195,14 +234,14 @@
         }
 
         /* Publications */
-        .publication {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #e8e8e8;
+        .pub-note {
+            color: #888;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
         }
 
-        .publication:last-child {
-            border-bottom: none;
+        .publication {
+            margin-bottom: 1.8rem;
         }
 
         .publication .title {
@@ -222,20 +261,37 @@
         }
 
         .publication .authors {
-            margin-bottom: 0.3rem;
-            color: #444;
-            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+            color: #888;
+            font-size: 1rem;
         }
 
         .publication .authors .me {
-            font-weight: 600;
+            font-weight: 700;
+            color: #111;
         }
 
         .publication .venue {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            color: #0066cc;
+        }
+
+        .publication .venue .conf {
+            font-weight: 700;
+        }
+
+        .publication .venue a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .publication .venue a:hover {
+            text-decoration: underline;
+        }
+
+        .publication .venue .sep {
+            color: #999;
+            margin: 0 0.35rem;
         }
 
         .publication .abstract {
@@ -359,6 +415,14 @@
             .news-item .date {
                 margin-bottom: 0.3rem;
             }
+
+            .education-item {
+                gap: 1rem;
+            }
+
+            .education-item .logo {
+                width: 48px;
+            }
         }
     </style>
 </head>
@@ -371,6 +435,7 @@
             </div>
             <div class="nav-right">
                 <a href="#about" class="active">about</a>
+                <a href="#education">education</a>
                 <a href="#publications">publications</a>
                 <!-- <a href="#projects">projects</a> -->
                 <a href="cv.pdf">cv</a>
@@ -383,30 +448,25 @@
         <!-- Header -->
         <header class="header-section">
             <h1>Mingyan Yang</h1>
-            <!-- <div class="affiliation">
+            <div class="affiliation">
                 Ph.D. Student in Computer Science<br>
-                University Name
+                Purdue University
             </div>
-            <div class="contact-info">
-                Office: Building Name, Room 123<br>
-                Email: your.email@university.edu
-            </div> -->
         </header>
 
         <!-- About Section with Photo -->
         <div class="about-container">
             <section id="about">
             <p>
-                I am Mingyan Yang (杨茗焱), a senior undergraduate computer science student from <a href="https://acm.sjtu.edu.cn/">ACM Honor Class</a>, <a href="https://en.zhiyuan.sjtu.edu.cn/">Zhiyuan College</a>, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a>. Currently, I am a research intern advised by Prof. <a href="https://jinyangli.github.io/">Jinyang Li</a> at New York University.
-                I also had the opportunity to work with Prof. <a href="https://jhc.sjtu.edu.cn/people/members/faculty/chen-chen.html">Chen Chen</a> at Shanghai Jiao Tong University.
+                I am a PhD student at Purdue University, advised by Prof. <a href="https://www.haoranyou.com/">Haoran You</a>. I graduated from <a href="https://acm.sjtu.edu.cn/">ACM Honors Class</a>, <a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a> in 2026 with a B.Eng. in Computer Science. I work on efficient algorithms and systems for machine learning through algorithm-hardware co-design, particularly for large language models.
             </p>
 
-            <p>
-                My research interests lie at the intersection of <strong>machine learning systems</strong> and <strong>large-scale 3D representations</strong>, with a focus on efficient systems and algorithms for scalable scene rendering and neural representations.
-            </p>
+            <!-- <p>
+                During my undergraduate studies, I was very fortunate to work with Prof. <a href="https://jinyangli.github.io/">Jinyang Li</a> and Prof. <a href="https://jhc.sjtu.edu.cn/people/members/faculty/chen-chen.html">Chen Chen</a>.
+            </p> -->
 
             <p>
-                I am applying to CS PhD programs for Fall 2026 and would be happy to connect—feel free to check my <a href="cv.pdf">CV</a> or <a href="mailto:yangmingyan@sjtu.edu.cn">reach out</a> if you’re interested in my research.
+                Feel free to check my <a href="cv.pdf">CV</a> or <a href="mailto:yang3217@purdue.edu">reach out</a> if you're interested in my research.
             </p>
 
             <!-- <h3>Interests</h3>
@@ -418,6 +478,10 @@
             </ul> -->
 
             <h2>News</h2>
+            <div class="news-item">
+                <div class="date">Sep 2026</div>
+                <div class="content">Started my Ph.D. at Purdue University, advised by Prof. <a href="https://www.haoranyou.com/">Haoran You</a>.</div>
+            </div>
             <div class="news-item">
                 <div class="date">Jul 2025</div>
                 <div class="content">Started my research internship at New York University.</div>
@@ -436,57 +500,77 @@
             </div> -->
             </section>
 
-            <div class="profile-photo">
-                <img src="ymy.jpg" alt="Mingyan Yang">
-            </div>
+            <!-- <div class="profile-photo">
+                <img src="images/ymy.jpg" alt="Mingyan Yang">
+            </div> -->
         </div>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+
+            <div class="education-item">
+                <div class="logo">
+                    <img src="images/purdue.svg" alt="Purdue University">
+                </div>
+                <div class="details">
+                    <span class="institution">Purdue University</span>, USA<br>
+                    Ph.D. Student, Computer Science &nbsp;·&nbsp; 2026 &ndash;<br>
+                    Advisor: Prof. <a href="https://www.haoranyou.com/">Haoran You</a>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="logo">
+                    <img src="images/nyu.svg" alt="New York University">
+                </div>
+                <div class="details">
+                    <span class="institution">New York University</span>, USA<br>
+                    Research Intern &nbsp;·&nbsp; Jul. 2025 &ndash; Dec. 2025<br>
+                    Advisor: Prof. <a href="https://jinyangli.github.io/">Jinyang Li</a>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <div class="logo">
+                    <img src="images/sjtu.png" alt="Shanghai Jiao Tong University">
+                </div>
+                <div class="details">
+                    <span class="institution">Shanghai Jiao Tong University</span>, China<br>
+                    B.Eng. in Computer Science &nbsp;·&nbsp; Sept. 2022 &ndash; June 2026<br>
+                    Member of <a href="https://acm.sjtu.edu.cn/">ACM Honors Class</a> (<strong>Top 5%</strong> students with interest in research)<br>
+                    Advisor: Prof. <a href="https://jhc.sjtu.edu.cn/people/members/faculty/chen-chen.html">Chen Chen</a>
+                </div>
+            </div>
+        </section>
 
         <!-- Publications Section -->
         <section id="publications">
             <h2>Selected Publications</h2>
 
+            <p class="pub-note">* denotes equal contribution.</p>
+
             <div class="publication">
                 <div class="title">
-                    <a href="#">Justitia: Fair and Efficient Scheduling for LLM Applications</a>
+                    <a href="https://arxiv.org/pdf/2510.17015">Justitia: Fair and Efficient Scheduling of Task-parallel LLM Agents with Selective Pampering</a>
                 </div>
                 <div class="authors">
-                    <span class="me">Mingyan Yang</span>, Guanjie Wang, Manqi Luo, Yifei Liu, Chen Chen, Han Zhao, Yu Feng, Quan Chen, Minyi Guo
+                    <span class="me">Mingyan Yang*</span>, Guanjie Wang*, Manqi Luo, Yifei Liu, Chen Chen, Han Zhao, Yu Feng, Quan Chen, Minyi Guo
                 </div>
                 <div class="venue">
-                    preprint
-                </div>
-                <!-- <div class="abstract">
-                    We propose a novel approach for efficient rendering of large-scale 3D scenes using neural
-                    Gaussian splatting with distributed computing. Our method achieves real-time performance
-                    while maintaining high visual quality across diverse scene types.
-                </div> -->
-                <div class="links">
-                    <!-- <a href="#">PDF</a> -->
-                    <a href="https://arxiv.org/pdf/2510.17015">arXiv</a>
-                    <!-- <a href="#">Code</a>
-                    <a href="#">Project Page</a> -->
+                    <span class="conf">NeurIPS 2026</span><span class="sep">/</span><a href="https://arxiv.org/abs/2510.17015">arXiv</a>
                 </div>
             </div>
 
             <div class="publication">
                 <div class="title">
-                    <a href="#">Revisiting 3D LLM Benchmarks: Are We Really Testing 3D Capabilities?</a>
+                    <a href="https://arxiv.org/abs/2502.08503">Revisiting 3D LLM Benchmarks: Are We Really Testing 3D Capabilities?</a>
                 </div>
                 <div class="authors">
-                    Jiahe Jin, Yanheng He, <span class="me">Mingyan Yang</span>
+                    Jiahe Jin*, Yanheng He*, <span class="me">Mingyan Yang*</span>
                 </div>
                 <div class="venue">
-                    Findings of the Association for Computational Linguistics (ACL 2025)
-                </div>
-                <!-- <div class="abstract">
-                    This work introduces an adaptive level-of-detail mechanism for neural rendering that
-                    dynamically adjusts computational resources based on viewing distance and scene complexity,
-                    enabling efficient rendering of complex environments.
-                </div> -->
-                <div class="links">
-                    <a href="https://aclanthology.org/2025.findings-acl.1222.pdf">PDF</a>
-                    <a href="https://arxiv.org/pdf/2502.08503">arXiv</a>
-                    <!-- <a href="#">Code</a> -->
+                    <span class="conf">ACL 2025 Findings</span><span class="sep">/</span><a href="https://aclanthology.org/2025.findings-acl.1222.pdf">PDF</a><span class="sep">/</span><a href="https://arxiv.org/abs/2502.08503">arXiv</a>
                 </div>
             </div>
 
